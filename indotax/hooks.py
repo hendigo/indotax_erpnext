@@ -84,6 +84,7 @@ app_license = "mit"
 
 # before_install = "indotax.install.before_install"
 # after_install = "indotax.install.after_install"
+after_install = "indotax.setup.salary_components.setup_salary_components"
 
 # Uninstallation
 # ------------
