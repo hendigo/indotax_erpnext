@@ -3,12 +3,12 @@ import frappe
 def setup_salary_components():
     """
     Membuat Salary Component default jika belum ada.
-    Fungsi ini bersifat idempoten, aman dijalankan berkali-kali.
+    Fungsi ini bersifat idempoten, aman dijalankan berkali_kali.
     """
 
     # Daftar komponen gaji yang digunakan oleh perusahaan
     salary_components = [
-        # --- EARNINGS (Pendapatan) ---
+        # ___ EARNINGS (Pendapatan) ___
         {
             "salary_component" : "Gaji Pokok",
             "salary_component_abbr" : "GP",
@@ -24,7 +24,7 @@ def setup_salary_components():
         },
         {
             "salary_component" : "Tunjangan Pemeliharaan Kesehatan",
-            "salary_component_abbr" : "T-KES",
+            "salary_component_abbr" : "T_KES",
             "type" : "Earning",
             "is_tax_applicable" : 1,
             "depends_on_payment_days" : 0,
@@ -51,7 +51,7 @@ def setup_salary_components():
         },
         {
             "salary_component" : "Tunjangan Jamsostek JKK",
-            "salary_component_abbr" : "T-JKK",
+            "salary_component_abbr" : "T_JKK",
             "type" : "Earning",
             "is_tax_applicable" : 1,
             "depends_on_payment_days" : 0,
@@ -59,12 +59,12 @@ def setup_salary_components():
             "remove_if_zero_valued" : 1,
             "condition" : "",
             "amount_based_on_formula" : 1,
-            "formula" : "(base + T-KES) * 0.0127 or 0",
+            "formula" : "(base + T_KES) * 0.0127 or 0",
             "description" : "Tunjangan Jaminan Kecelakaan Kerja (JKK) yang dibayarkan perusahaan.",
         },
         {
             "salary_component" : "Tunjangan Jamsostek JK",
-            "salary_component_abbr" : "T-JK",
+            "salary_component_abbr" : "T_JK",
             "type" : "Earning",
             "is_tax_applicable" : 1,
             "depends_on_payment_days" : 0,
@@ -72,12 +72,12 @@ def setup_salary_components():
             "remove_if_zero_valued" : 1,
             "condition" : "",
             "amount_based_on_formula" : 1,
-            "formula" : "(base + T-KES) * 0.003",
+            "formula" : "(base + T_KES) * 0.003",
             "description" : "Tunjangan Jaminan Kematian (JK) yang dibayarkan perusahaan",
         },
         {
             "salary_component" : "Tunjangan Jamsostek JHT",
-            "salary_component_abbr" : "T-JHT",
+            "salary_component_abbr" : "T_JHT",
             "type" : "Earning",
             "is_tax_applicable" : 0,
             "depends_on_payment_days" : 0,
@@ -85,12 +85,12 @@ def setup_salary_components():
             "remove_if_zero_valued" : 1,
             "condition" : "",
             "amount_based_on_formula" : 1,
-            "formula" : "(base + T-KES) * 0.037",
+            "formula" : "(base + T_KES) * 0.037",
             "description" : "Tunjangan Jaminan Hari Tua (JHT) yang dibayarkan perusahaan",
         },
         {
             "salary_component" : "Tunjangan BPJS Kesehatan",
-            "salary_component_abbr" : "T-BPJSKES",
+            "salary_component_abbr" : "T_BPJSKES",
             "type" : "Earning",
             "is_tax_applicable" : 1,
             "depends_on_payment_days" : 0,
@@ -98,12 +98,12 @@ def setup_salary_components():
             "remove_if_zero_valued" : 1,
             "condition" : "",
             "amount_based_on_formula" : 1,
-            "formula" : "(base + T-KES) * 0.04",
+            "formula" : "(base + T_KES) * 0.04",
             "description" : "Tunjangan Iuran BPJS Kesehatan yang dibayarkan perusahaan.",
         },
         {
             "salary_component" : "Tunjangan Pemeliharaan Kesehatan Keluarga",
-            "salary_component_abbr" : "T-KES-KEL",
+            "salary_component_abbr" : "T_KES_KEL",
             "type" : "Earning",
             "is_tax_applicable" : 1,
             "depends_on_payment_days" : 0,
@@ -116,7 +116,7 @@ def setup_salary_components():
         },
         {
             "salary_component" : "Tunjangan Iuran Pensiun",
-            "salary_component_abbr" : "T-PENSIUN",
+            "salary_component_abbr" : "T_PENSIUN",
             "type" : "Earning",
             "is_tax_applicable" : 0,
             "depends_on_payment_days" : 0,
@@ -124,7 +124,7 @@ def setup_salary_components():
             "remove_if_zero_valued" : 1,
             "condition" : "",
             "amount_based_on_formula" : 1,
-            "formula" : "(base + T-KES) * 0.02",
+            "formula" : "(base + T_KES) * 0.02",
             "description" : "Tunjangan iuran pensiun yang dibayarkan perusahaan.",
         },
         {
@@ -138,7 +138,7 @@ def setup_salary_components():
             "condition" : "",
             "amount_based_on_formula" : 0,
             "formula" : "",
-            "description" : "Pembayaran non-reguler berdasarkan kinerja atau pencapaian",
+            "description" : "Pembayaran non_reguler berdasarkan kinerja atau pencapaian",
         },
         {
             "salary_component" : "Insentif",
@@ -167,10 +167,10 @@ def setup_salary_components():
             "description" : "Tunjangan Hari Raya Keagamaan.",
         },
         
-        # --- DEDUCTION (Potongan) ---
+        # ___ DEDUCTION (Potongan) ___
         {
             "salary_component" : "Potongan Karena Sakit",
-            "salary_component_abbr" : "P-SAKIT",
+            "salary_component_abbr" : "P_SAKIT",
             "type" : "Deduction",
             "is_tax_applicable" : 0,
             "depends_on_payment_days" : 0,
@@ -183,7 +183,7 @@ def setup_salary_components():
         },
         {
             "salary_component" : "Potongan Hutang ke Perusahaan",
-            "salary_component_abbr" : "P-HUTANG",
+            "salary_component_abbr" : "P_HUTANG",
             "type" : "Deduction",
             "is_tax_applicable" : 0,
             "depends_on_payment_days" : 0,
@@ -196,7 +196,7 @@ def setup_salary_components():
         },
         {
             "salary_component" : "Potongan Iuran Koperasi",
-            "salary_component_abbr" : "P-KOPERASI",
+            "salary_component_abbr" : "P_KOPERASI",
             "type" : "Deduction",
             "is_tax_applicable" : 0,
             "depends_on_payment_days" : 0,
@@ -210,7 +210,7 @@ def setup_salary_components():
         },
         {
             "salary_component" : "Potongan Hutang Koperasi",
-            "salary_component_abbr" : "P-H-KOPERASI",
+            "salary_component_abbr" : "P_H_KOPERASI",
             "type" : "Deduction",
             "is_tax_applicable" : 0,
             "depends_on_payment_days" : 0,
@@ -223,7 +223,7 @@ def setup_salary_components():
         },
         {
             "salary_component" : "Potongan Jamsostek (Perusahaan)",
-            "salary_component_abbr" : "P-JAM-PER",
+            "salary_component_abbr" : "P_JAM_PER",
             "type" : "Deduction",
             "is_tax_applicable" : 0,
             "depends_on_payment_days" : 0,
@@ -231,12 +231,12 @@ def setup_salary_components():
             "remove_if_zero_valued" : 1,
             "condition" : "",
             "amount_based_on_formula" : 1,
-            "formula" : "T-JK + T-JKK + T-JHT",
+            "formula" : "T_JK + T_JKK + T_JHT",
             "description" : "Potongan iuran wajib Jamsostek oleh perusahaan",
         },
         {
             "salary_component" : "Potongan Jamsostek (Pribadi)",
-            "salary_component_abbr" : "P-JAM-PRI",
+            "salary_component_abbr" : "P_JAM_PRI",
             "type" : "Deduction",
             "is_tax_applicable" : 1,
             "depends_on_payment_days" : 0,
@@ -244,12 +244,12 @@ def setup_salary_components():
             "remove_if_zero_valued" : 1,
             "condition" : "",
             "amount_based_on_formula" : 1,
-            "formula" : "(base + T-KES) * 0.02",
+            "formula" : "(base + T_KES) * 0.02",
             "description" : "Potongan Jamsostek dari Gaji Karyawan",
         },
         {
             "salary_component" : "Potongan BPJS (Perusahaan)",
-            "salary_component_abbr" : "P-BPJS-PER",
+            "salary_component_abbr" : "P_BPJS_PER",
             "type" : "Deduction",
             "is_tax_applicable" : 0,
             "depends_on_payment_days" : 0,
@@ -257,12 +257,12 @@ def setup_salary_components():
             "remove_if_zero_valued" : 1,
             "condition" : "",
             "amount_based_on_formula" : 1,
-            "formula" : "T-BPJSKES",
+            "formula" : "T_BPJSKES",
             "description" : "Potongan BPJS yang dibayarkan oleh perusahaan.",
         },
         {
             "salary_component" : "Potongan BPJS (Pribadi)",
-            "salary_component_abbr" : "P-BPJS-PRI",
+            "salary_component_abbr" : "P_BPJS_PRI",
             "type" : "Deduction",
             "is_tax_applicable" : 1,
             "depends_on_payment_days" : 0,
@@ -270,12 +270,12 @@ def setup_salary_components():
             "remove_if_zero_valued" : 1,
             "condition" : "",
             "amount_based_on_formula" : 1,
-            "formula" : "(GP + T-KES) * 0.01",
+            "formula" : "(GP + T_KES) * 0.01",
             "description" : "Potongan BPJS yang dibayarkan dari Gaji Karyawan",
         },
         {
             "salary_component" : "Potongan Iuran Pensiun (Perusahaan)",
-            "salary_component_abbr" : "P-PEN-PER",
+            "salary_component_abbr" : "P_PEN_PER",
             "type" : "Deduction",
             "is_tax_applicable" : 0,
             "depends_on_payment_days" : 0,
@@ -283,12 +283,12 @@ def setup_salary_components():
             "remove_if_zero_valued" : 1,
             "condition" : "",
             "amount_based_on_formula" : 1,
-            "formula" : "T-PENSIUN",
+            "formula" : "T_PENSIUN",
             "description" : "Potongan Iuran Pensiun dari Perusahaan",
         },
         {
             "salary_component" : "Potongan Iuran Pensiun (Pribadi)",
-            "salary_component_abbr" : "P-PEN-PRI",
+            "salary_component_abbr" : "P_PEN_PRI",
             "type" : "Deduction",
             "is_tax_applicable" : 0,
             "depends_on_payment_days" : 0,
@@ -296,12 +296,12 @@ def setup_salary_components():
             "remove_if_zero_valued" : 1,
             "condition" : "",
             "amount_based_on_formula" : 1,
-            "formula" : "P-PEN-PER * 0.5",
+            "formula" : "P_PEN_PER * 0.5",
             "description" : "Potongan Iuran Pensiun dari Gaji Pribadi",
         },
         {
             "salary_component" : "Potongan PPh21",
-            "salary_component_abbr" : "P-PPH21",
+            "salary_component_abbr" : "P_PPH21",
             "type" : "Deduction",
             "is_tax_applicable" : 0,
             "is_income_tax_component" : 1,
@@ -323,7 +323,7 @@ def setup_salary_components():
         if not default_company:
             raise ValueError("Default Company not set in Global Defaults")
     except (frappe.DoesNotExistError, ValueError) as e:
-        print(f"Peringatan: Tidak dapat menemukan Default Company. Pastikan sudah di-set di Global Defaults. Error: {e}")
+        print(f"Peringatan: Tidak dapat menemukan Default Company. Pastikan sudah di_set di Global Defaults. Error: {e}")
         return
     
     print("Memulai proses setup Salary Component...")
